@@ -1,18 +1,19 @@
-import './Cart.css'
-import {CartItemProps} from '../types/Cart'
-import { useId } from 'react'
-import { CartIcon, ClearCartIcon } from './Icons'
-//import { useCart } from '../hooks/useCart.js'
+import './Cart.css';
+import {CartItemProps} from '../types/Cart';
+import { useId } from 'react';
+import { CartIcon, ClearCartIcon } from './Icons';
+import { useCart } from '../hooks/useCart';
 
-export function CartItem ({ img, price, title, quantity, addToCart }:CartItemProps) {
+export function CartItem ({ images, price, name, quantity, addToCart }:CartItemProps) {
+  console.log('img faz: ',images,price, name, quantity)
   return (
     <li>
       <img
-        src={img}
-        alt={title}
+        src={images[0]}
+        alt={name}
       />
       <div>
-        <strong>{title}</strong> - ${price}
+        <strong>{name}</strong> - ${price}
       </div>
 
       <footer>
@@ -26,8 +27,8 @@ export function CartItem ({ img, price, title, quantity, addToCart }:CartItemPro
 }
 
 export function Cart () {
-  const cartCheckboxId = useId()
-  //const { cart, clearCart, addToCart } = useCart()
+  const cartCheckboxId = useId();
+  const { cart, clearCart, addToCart } = useCart();
 
   return (
     <>
@@ -38,17 +39,16 @@ export function Cart () {
 
       <aside className='cart'>
         <ul>
-          {/*cart.map(product => (
+          {cart.map((product:any) => (
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
               {...product}
             />
-          ))*/}
+          ))}
         </ul>
 
-        {/*<button onClick={clearCart}>*/}
-        <button >
+        <button onClick={clearCart}>
           <ClearCartIcon />
         </button>
       </aside>
