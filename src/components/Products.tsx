@@ -13,36 +13,35 @@ export function Products ({products}:ProductList){
         <main className='products'>
             <ul>
                 {products.map(product =>{
-          const isProductInCart = checkProductInCart(product)
-
-          return (
-            <li key={product.id}>
-              <img
-                src={product.images[0]}
-                alt={product.name}
-              />
-              <div>
-                <strong>{product.name}</strong> - ${product.price}
-              </div>
-              <div>
-                <button
-                  style={{ backgroundColor: isProductInCart ? 'red' : '#09f' }} onClick={() => {
-                    isProductInCart
-                      ? removeFromCart(product)
-                      : addToCart(product)
-                  }}
-                >
-                  {
-                    isProductInCart
-                      ? <RemoveFromCartIcon />
-                      : <AddToCartIcon />
-                  }
-                </button>
-              </div>
-            </li>
-          )
-        })}
-            </ul>
-        </main>
+                  const isProductInCart = checkProductInCart(product)
+                  return (
+                    <li key={product.id}>
+                      <img
+                        src={product.images[0]}
+                        alt={product.name}
+                      />
+                      <div>
+                        <strong>{product.name}</strong> - ${product.price}
+                      </div>
+                      <div>
+                        <button
+                          style={{ backgroundColor: isProductInCart ? 'green' : '#d8971e' }} onClick={() => {
+                            isProductInCart
+                              ? removeFromCart(product)
+                              : addToCart(product)
+                          }}
+                        >
+                          {
+                            isProductInCart
+                              ? <RemoveFromCartIcon />
+                              : <AddToCartIcon />
+                          }
+                        </button>
+                      </div>
+                    </li>
+                  )
+                })}
+          </ul>
+      </main>
     )
 }

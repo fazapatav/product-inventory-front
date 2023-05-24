@@ -5,7 +5,6 @@ import { CartIcon, ClearCartIcon } from './Icons';
 import { useCart } from '../hooks/useCart';
 
 export function CartItem ({ images, price, name, quantity, addToCart }:CartItemProps) {
-  console.log('img faz: ',images,price, name, quantity)
   return (
     <li>
       <img

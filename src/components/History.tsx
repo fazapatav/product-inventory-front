@@ -1,13 +1,13 @@
-//import './Cart.css';
+import './History.css';
 import { useId } from 'react';
 import { ListIcon, ClearCartIcon } from './Icons';
 import { useCart } from '../hooks/useCart';
 
-export function HistoryItem ({ name }: { name: string }) {
+export function HistoryItem ({ buy }: { buy: any }) {
   return (
     <li>
       <div>
-        <strong>{name}</strong>
+        <strong>{buy.buyDate}</strong>
       </div>
     </li>
   )
@@ -15,21 +15,25 @@ export function HistoryItem ({ name }: { name: string }) {
 
 export function History () {
   const historyCheckboxId = useId();
-  const buyHistory=['play','pc','xbox'];
+  const buyHistory=[
+    {buyDate:'2023-04-20',product:[{image:"",price:100,quantity:1},{image:"",price:200,quantity:5}]},
+    {buyDate:'2023-04-22',product:[{image:"",price:100,quantity:1},{image:"",price:200,quantity:5}]},
+    {buyDate:'2023-04-24',product:[{image:"",price:100,quantity:1},{image:"",price:200,quantity:5}]},
+  ];
 
   return (
     <>
-      <label className='cart-button2' htmlFor={historyCheckboxId}>
+      <label className='history-button' htmlFor={historyCheckboxId}>
         <ListIcon />
       </label>
       <input id={historyCheckboxId} type='checkbox' hidden />
 
-      <aside className='cart2'>
-        <   ul>
-          {buyHistory.map((bh:string,index: number) => (
+      <aside className='history'>
+        <ul>
+          {buyHistory.map((bh:any,index: number) => (
             <HistoryItem
                 key={index}
-                name={bh}
+                buy={bh}
             />
           ))}
         </ul>
