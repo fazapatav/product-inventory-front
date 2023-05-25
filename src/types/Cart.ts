@@ -1,7 +1,7 @@
 export interface CartItemProps {
-    img: string;
+    image: string;
     price: number;
-    title: string;
+    name: string;
     quantity: number;
     addToCart: () => void; 
 }

@@ -1,18 +1,19 @@
-import './Cart.css'
-import {CartItemProps} from '../types/Cart'
-import { useId } from 'react'
-import { CartIcon, ClearCartIcon } from './Icons'
-//import { useCart } from '../hooks/useCart.js'
+import './Cart.css';
+import {CartItemProps} from '../types/Cart';
+import { useId } from 'react';
+import { CartIcon, ClearCartIcon,FinishBuyIcon} from './Icons';
+import { useCart } from '../hooks/useCart';
+import {payBuy} from '../api/cart';
 
-export function CartItem ({ img, price, title, quantity, addToCart }:CartItemProps) {
+export function CartItem ({ image, price, name, quantity, addToCart }:CartItemProps) {
   return (
     <li>
       <img
-        src={img}
-        alt={title}
+        src={image}
+        alt={name}
       />
       <div>
-        <strong>{title}</strong> - ${price}
+        <strong>{name}</strong> - ${price}
       </div>
 
       <footer>
@@ -26,8 +27,14 @@ export function CartItem ({ img, price, title, quantity, addToCart }:CartItemPro
 }
 
 export function Cart () {
-  const cartCheckboxId = useId()
-  //const { cart, clearCart, addToCart } = useCart()
+  const cartCheckboxId = useId();
+  const { cart, clearCart, addToCart } = useCart();
+  
+  const buy = async() =>{
+    await payBuy(cart);
+    alert("Compra finalizada");
+    clearCart();
+  }
 
   return (
     <>
@@ -38,18 +45,21 @@ export function Cart () {
 
       <aside className='cart'>
         <ul>
-          {/*cart.map(product => (
+          {cart.map((product:any) => (
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
               {...product}
             />
-          ))*/}
+          ))}
         </ul>
 
-        {/*<button onClick={clearCart}>*/}
-        <button >
+        <button onClick={clearCart}>
           <ClearCartIcon />
+        </button>
+        -
+        <button onClick={buy}>
+            <FinishBuyIcon/>
         </button>
       </aside>
     </>
