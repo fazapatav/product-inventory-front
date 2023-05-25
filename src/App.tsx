@@ -4,6 +4,7 @@ import { Products } from './components/Products';
 import { Cart } from './components/Cart';
 import { CartProvider } from './context/cart';
 import {History} from './components/History';
+import {ProductForm} from './components/CreateProduct';
 
 function App() {
   const [products,setProducts] = useState([]);
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <CartProvider>
+        <ProductForm/>
         <History/>
         <Cart/>
         <Products products={products}/>
