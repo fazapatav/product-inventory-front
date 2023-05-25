@@ -23,3 +23,13 @@ export const payBuy = async(cart:any) =>{
         console.error('Error:', error);
     }  
 } 
+
+export const fetchBuys = async () => {
+    try {
+        const response = await fetch('http://localhost:7267/Buy/Get');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching buys:', error);
+    }
+}
