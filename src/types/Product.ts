@@ -4,7 +4,7 @@ export interface Product{
     inInventary:number;
     price:number;
     description:string;
-    images:string[];
+    image:string;
 }
 
 export interface ProductList{

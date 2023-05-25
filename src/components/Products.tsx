@@ -17,7 +17,7 @@ export function Products ({products}:ProductList){
                   return (
                     <li key={product.id}>
                       <img
-                        src={product.images[0]}
+                        src={product.image}
                         alt={product.name}
                       />
                       <div>

@@ -1,14 +1,15 @@
 import './Cart.css';
 import {CartItemProps} from '../types/Cart';
 import { useId } from 'react';
-import { CartIcon, ClearCartIcon } from './Icons';
+import { CartIcon, ClearCartIcon,FinishBuyIcon} from './Icons';
 import { useCart } from '../hooks/useCart';
+import {payBuy} from '../api/cart';
 
-export function CartItem ({ images, price, name, quantity, addToCart }:CartItemProps) {
+export function CartItem ({ image, price, name, quantity, addToCart }:CartItemProps) {
   return (
     <li>
       <img
-        src={images[0]}
+        src={image}
         alt={name}
       />
       <div>
@@ -28,6 +29,12 @@ export function CartItem ({ images, price, name, quantity, addToCart }:CartItemP
 export function Cart () {
   const cartCheckboxId = useId();
   const { cart, clearCart, addToCart } = useCart();
+  
+  const buy = async() =>{
+    await payBuy(cart);
+    alert("Compra finalizada");
+    clearCart();
+  }
 
   return (
     <>
@@ -49,6 +56,10 @@ export function Cart () {
 
         <button onClick={clearCart}>
           <ClearCartIcon />
+        </button>
+        -
+        <button onClick={buy}>
+            <FinishBuyIcon/>
         </button>
       </aside>
     </>
