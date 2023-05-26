@@ -4,8 +4,10 @@
     padding: 32px;
     position: fixed;
     right: 0px;
-    top: 0px;
-    width: 250px;
+    top: 50px;
+    width: 300px;
+    max-height: 800px;
+    overflow-y: auto;
   }
   
   .cart img {

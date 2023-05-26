@@ -1,8 +1,15 @@
 .product-form {
-    display: flex;
-    flex-direction: column;
+    display: none;
+
+
+    background: #d8971e;
+    padding: 32px;
+    position: fixed;
+    right: 0px;
+    top: 50px;
     width: 300px;
-    margin: 0 auto;
+    overflow-y: auto;
+    max-height: 800px;
   }
   
   .product-form h2 {
@@ -26,7 +33,7 @@
   }
   
   .product-form button {
-    background-color: #007bff;
+    background-color: rgb(37, 173, 10);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -35,6 +42,31 @@
   }
   
   .product-form button:hover {
-    background-color: #0056b3;
+    background-color: #458806;
   }
   
+  .product-form-button {
+    align-items: center;
+    background: rgb(37, 173, 10);
+    border-radius: 9999px;
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    padding: 4px;
+    position: absolute;
+    right: 192px;
+    top: 5px;
+    transition: all .3s ease;
+    width: 32px;
+    z-index: 9999;
+  }
+  
+  .product-form-button:hover {
+    scale: 1.2;
+  }
+
+  .product-form-button~ input:checked ~ .product-form {
+    height: 100%;
+    display: block;
+  }
